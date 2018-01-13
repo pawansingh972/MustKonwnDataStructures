@@ -6,3 +6,4 @@
 - Stack
 - Queue
 - LinkedList
+- Trees
