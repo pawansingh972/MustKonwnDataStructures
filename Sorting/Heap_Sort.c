@@ -11,17 +11,20 @@ void printArray(int arr[], int arrLength) {
 	printf(" ]");
 }
 
+// To heapify a subtree rooted with node i which is
+// an index in arr[]. arrLength is size of heap
 void MaxHeapify(int arr[], int arrLength, int i) {
 
-	int left = 2 * i;
-	int right = 2 * i + 1;
-	int largest, temp;
-	
-	if(left <= n && arr[left] > arr[i]) {
+	int left = 2 * i + 1;
+	int right = 2 * i + 2;
+	int largest = i;
+	int temp;
+
+	if(left < arrLength && arr[left] > arr[i]) {
 		largest = left;
 	}
 
-	if(right <= n && arr[right] > arr[largest]) {
+	if(right < arrLength && arr[right] > arr[largest]) {
 		largest = right;
 	}
 
@@ -36,17 +39,19 @@ void MaxHeapify(int arr[], int arrLength, int i) {
 void BuildMaxHeap(int arr[], int arrLength) {
 	int i;
 	for(i = arrLength / 2 - 1; i >= 0; i--) {
-		MaxHeapify(arr, n, i);	
+		MaxHeapify(arr, arrLength, i);	
 	}
 	return;
 }
 
 void HeapSort(int arr[], int arrLength) {
+	int i, temp;
+
 	// Build heap (rearrange array)
 	BuildMaxHeap(arr, arrLength);
 
-	for(i  = arrLength - 1; i >= 0; i--) {
-		SWAP(arr[0], arr[i]);
+	for(i = arrLength - 1; i >= 0; i--) {
+		SWAP(arr[i], arr[0], temp);
 		MaxHeapify(arr, i, 0);	
 	}
 	return;
@@ -58,7 +63,6 @@ int main(int argc, char const *argv[]) {
 	int arrLength = sizeof(arr) / sizeof(int);
 	
 	HeapSort(arr, arrLength);
-	
 	printArray(arr, arrLength);
 
 	return 0;
