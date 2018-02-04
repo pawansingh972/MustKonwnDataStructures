@@ -24,10 +24,10 @@ int BinarySearch(int arr[], int searchKey, int arrLength) {
 
 int main(int argc, char const *argv[]) {
 	
-	int arr[] = {20, 12, 5, 14, 9, 31, 8, 2, 10, 0, 3};
+	int arr[] = {0, 2, 3, 5, 8, 9, 10, 12, 14, 20, 31};
 	int arrLength = sizeof(arr) / sizeof(int);
 	
-	int searchKey = 31;
+	int searchKey = 20;
 	int foundAt = BinarySearch(arr, searchKey, arrLength);
 	if(foundAt == -1) {
 		printf("%d not found \n", searchKey);
